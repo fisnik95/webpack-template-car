@@ -14,7 +14,7 @@ GetAllCarsButton.addEventListener("click", showAllCars)
 addbutton.addEventListener("click",addcar);
 function  addcar() :void {
     let addmodelelement : HTMLInputElement = < HTMLInputElement> document.getElementById("addmodel");
-    let addvendorelement : HTMLInputElement = <HTMLInputElement> document.getElementById("addvendor ");
+    let addvendorelement : HTMLInputElement = <HTMLInputElement> document.getElementById("addvendor");
     let addpriceelement : HTMLInputElement = < HTMLInputElement> document.getElementById("addprice");
     let Mymodel : string = addmodelelement.value;
     let Myvendor : string = addvendorelement.value;
