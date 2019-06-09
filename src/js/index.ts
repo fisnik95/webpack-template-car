@@ -53,7 +53,7 @@ function showAllMeassurements():void{
        let result : string="<ol>"
 
        response.data.forEach((meassurement: IMeassurement)=>{
-           result +="<li>"+"  "  +meassurement.pressure+"  "   +meassurement.humidity +"  " +meassurement.Temperature+" "+meassurement.timestamp+" " +"<li>"
+           result +="<li>"+"  "  +meassurement.pressure+"  "   +meassurement.humidity +"  " +meassurement.temperature+" "+meassurement.timestamp+" " +"<li>"
        });
        result+= "</ol>"
        ContentElement.innerHTML=result;
