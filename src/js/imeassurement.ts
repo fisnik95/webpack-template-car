@@ -4,4 +4,4 @@ export interface IMeassurement{
     pressure : number;
     humidity : number;
     temperature : number;
-    timestamp : Date;}
+    timestamp : number;}
