@@ -5,23 +5,25 @@ import axios,{
     AxiosError
 
 }from "../../node_modules/axios/index"
-import { ICar } from "./icar";
+import { IMeassurement } from "./imeassurement";
 let ContentElement: HTMLDivElement = <HTMLDivElement> document.getElementById("content");
-let GetAllCarsButton:HTMLButtonElement = <HTMLButtonElement>document.getElementById("getallbutton");
+let GetAllMeassurementsButton:HTMLButtonElement = <HTMLButtonElement>document.getElementById("getallbutton");
 
 let addbutton:HTMLButtonElement = <HTMLButtonElement> document.getElementById("addbutton");
-GetAllCarsButton.addEventListener("click", showAllCars)
-addbutton.addEventListener("click",addcar);
-function  addcar() :void {
-    let addmodelelement : HTMLInputElement = < HTMLInputElement> document.getElementById("addmodel");
-    let addvendorelement : HTMLInputElement = <HTMLInputElement> document.getElementById("addvendor");
-    let addpriceelement : HTMLInputElement = < HTMLInputElement> document.getElementById("addprice");
-    let Mymodel : string = addmodelelement.value;
-    let Myvendor : string = addvendorelement.value;
-    let Myprice : number = +addpriceelement.value;
+GetAllMeassurementsButton.addEventListener("click", showAllMeassurements)
+addbutton.addEventListener("click",addmeassurement);
+function  addmeassurement() :void {
+    let addpressureelement : HTMLInputElement = < HTMLInputElement> document.getElementById("addpressure");
+    let addhumidityelement : HTMLInputElement = <HTMLInputElement> document.getElementById("addhumidity");
+    let addtemperatureelement : HTMLInputElement = < HTMLInputElement> document.getElementById("addtemperature");
+    let addtimestampelement : HTMLInputElement = < HTMLInputElement> document.getElementById("addtimestamp");
+    let MYpressure : number = +addpressureelement.value;
+    let Myhumidity: number = +addhumidityelement.value;
+    let Mytemperature : number  = +addtemperatureelement.value;
+    let Mytimestamp : number = +addtimestampelement;
     
-    axios.post<ICar>("https://webapicar20190326034339.azurewebsites.net/api/cars",
-    {model:Mymodel,vendor:Myvendor,price:Myprice}) 
+    axios.post<IMeassurement>("https://meassurement.azurewebsites.net/api/Meassurements",
+    {pressure:MYpressure,humidity:Myhumidity,temperature:Mytemperature,timestamp:Mytimestamp}) 
     .then(function(Response :AxiosResponse):void
     {
         console.log("statuskoden er :"+ Response.status)
@@ -38,11 +40,11 @@ function  addcar() :void {
 }
 
 
-function showAllCars():void{
+function showAllMeassurements():void{
 
-    axios.get<ICar[]>("https://webapicar20190326034339.azurewebsites.net/api/cars")
+    axios.get<IMeassurement[]>("https://meassurement.azurewebsites.net/api/Meassurements")
     
-    .then(function(response:AxiosResponse<ICar[]>):void
+    .then(function(response:AxiosResponse<IMeassurement[]>):void
 
    {
        console.log("er i then")
@@ -50,8 +52,8 @@ function showAllCars():void{
 
        let result : string="<ol>"
 
-       response.data.forEach((car: ICar)=>{
-           result +="<li>"+"  "  +car.model+"  "   +car.vendor +"  " +car.id+"<li>"
+       response.data.forEach((meassurement: IMeassurement)=>{
+           result +="<li>"+"  "  +meassurement.pressure+"  "   +meassurement.humidity +"  " +meassurement.Temperature+" "+meassurement.timestamp+"<li>"
        });
        result+= "</ol>"
        ContentElement.innerHTML=result;
@@ -68,10 +70,10 @@ function showAllCars():void{
     )
     
 
-    console.log("er i slutning af showallcars function");
+    console.log("er i slutning af showallMeassurements function");
 
   
 
 
 }
-// showAllCars();
+// showAllMeassurements();
