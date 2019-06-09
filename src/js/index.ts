@@ -18,8 +18,8 @@ function  addmeassurement() :void {
     let addtemperatureelement : HTMLInputElement = <HTMLInputElement> document.getElementById("addtemperature");
     let addtimestampelement : HTMLInputElement = <HTMLInputElement> document.getElementById("addtimestamp");
     let MYpressure : number = +addpressureelement.value;
-    let Myhumidity: number = +addhumidityelement.value;
-    let Mytemperature : number  = +addtemperatureelement.value;
+    let Myhumidity : number = +addhumidityelement.value;
+    let Mytemperature : number = +addtemperatureelement.value;
     let Mytimestamp : number = +addtimestampelement;
     
     axios.post<IMeassurement>("https://meassurement.azurewebsites.net/api/Meassurements",
