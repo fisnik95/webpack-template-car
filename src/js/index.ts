@@ -20,7 +20,7 @@ function  addmeassurement() :void {
     let MYpressure : number = +addpressureelement.value;
     let Myhumidity : number = +addhumidityelement.value;
     let Mytemperature : number = +addtemperatureelement.value;
-    let Mytimestamp : number = +addtimestampelement;
+    let Mytimestamp : Date = addtimestampelement.value;
     
     axios.post<IMeassurement>("https://meassurement.azurewebsites.net/api/Meassurements",
     {pressure:MYpressure,humidity:Myhumidity,temperature:Mytemperature,timestamp:Mytimestamp}) 
@@ -53,7 +53,7 @@ function showAllMeassurements():void{
        let result : string="<ol>"
 
        response.data.forEach((meassurement: IMeassurement)=>{
-           result +="<li>"+"  "  +meassurement.pressure+"  "   +meassurement.humidity +"  " +meassurement.temperature+" "+meassurement.timestamp+" " +"<li>"
+           result +="<li>"+"  "  +meassurement.pressure+"  "   +meassurement.humidity +"  " +meassurement.temperature+" "+meassurement.timestamp.toDateString+" " +"<li>"
        });
        result+= "</ol>"
        ContentElement.innerHTML=result;
