@@ -15,8 +15,8 @@ addbutton.addEventListener("click",addmeassurement);
 function  addmeassurement() :void {
     let addpressureelement : HTMLInputElement = < HTMLInputElement> document.getElementById("addpressure");
     let addhumidityelement : HTMLInputElement = <HTMLInputElement> document.getElementById("addhumidity");
-    let addtemperatureelement : HTMLInputElement = < HTMLInputElement> document.getElementById("addtemperature");
-    let addtimestampelement : HTMLInputElement = < HTMLInputElement> document.getElementById("addtimestamp");
+    let addtemperatureelement : HTMLInputElement = <HTMLInputElement> document.getElementById("addtemperature");
+    let addtimestampelement : HTMLInputElement = <HTMLInputElement> document.getElementById("addtimestamp");
     let MYpressure : number = +addpressureelement.value;
     let Myhumidity: number = +addhumidityelement.value;
     let Mytemperature : number  = +addtemperatureelement.value;
@@ -53,7 +53,7 @@ function showAllMeassurements():void{
        let result : string="<ol>"
 
        response.data.forEach((meassurement: IMeassurement)=>{
-           result +="<li>"+"  "  +meassurement.pressure+"  "   +meassurement.humidity +"  " +meassurement.Temperature+" "+meassurement.timestamp+"<li>"
+           result +="<li>"+"  "  +meassurement.pressure+"  "   +meassurement.humidity +"  " +meassurement.Temperature+" "+meassurement.timestamp+" " +"<li>"
        });
        result+= "</ol>"
        ContentElement.innerHTML=result;
